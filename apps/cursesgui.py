@@ -79,7 +79,7 @@ class SpectrumWindow(object):
         max_y = self.dims[0]-1
 
         # Scaling factor for plot
-        scale = (min_y-max_y)/(self.max_db-self.min_db)
+        scale = (min_y-max_y)//(self.max_db-self.min_db)
 
         # Generate y position, clip to window, and convert to int
         pos_y = (win_bin_max_db - self.max_db) * scale
@@ -89,7 +89,7 @@ class SpectrumWindow(object):
          # Clear previous contents, draw border, and title
         self.win.clear()
         self.win.border(0)
-        self.win.addnstr(0, self.dims[1]/2-4, "SPECTRUM", 8,
+        self.win.addnstr(0, self.dims[1]//2-4, "SPECTRUM", 8,
                          curses.color_pair(4))
 
         # Draw the bars
@@ -191,7 +191,7 @@ class ChannelWindow(object):
         # Clear previous contents, draw border, and title
         self.win.clear()
         self.win.border(0)
-        self.win.addnstr(0, self.dims[1]/2-4, "CHANNELS", 8,
+        self.win.addnstr(0, self.dims[1]//2-4, "CHANNELS", 8,
                          curses.color_pair(4))
 
         # Limit the displayed channels to no more than two rows
@@ -247,7 +247,7 @@ class LockoutWindow(object):
         # Clear previous contents, draw border, and title
         self.win.clear()
         self.win.border(0)
-        self.win.addnstr(0, self.dims[1]/2-3, "LOCKOUT", 7,
+        self.win.addnstr(0, self.dims[1]//2-3, "LOCKOUT", 7,
                          curses.color_pair(4))
 
         # Draw the lockout channels
@@ -354,7 +354,7 @@ class RxWindow(object):
         # Clear previous contents, draw border, and title
         self.win.clear()
         self.win.border(0)
-        self.win.addnstr(0, self.dims[1]/2-4, "RECEIVER", 8,
+        self.win.addnstr(0, self.dims[1]//2-4, "RECEIVER", 8,
                          curses.color_pair(4))
 
         # Draw the receiver info prefix fields
@@ -380,10 +380,10 @@ class RxWindow(object):
         self.win.addnstr(10, 1, text, 15)
 
         # Draw the receiver info suffix fields
-        if self.freq_entry <> 'None':
+        if self.freq_entry != 'None':
             text = self.freq_entry
         else:
-            text = '{:.3f}'.format((self.center_freq)/1E6)
+            text = '{:.3f}'.format((self.center_freq)//1E6)
         self.win.addnstr(1, 17, text, 8, curses.color_pair(5))
         text = str(self.gain_db)
         self.win.addnstr(2, 17, text, 8, curses.color_pair(5))
@@ -391,7 +391,7 @@ class RxWindow(object):
         self.win.addnstr(3, 17, text, 8, curses.color_pair(5))
         text = str(self.bb_gain_db)
         self.win.addnstr(4, 17, text, 8, curses.color_pair(5))
-        text = str(self.samp_rate/1E6)
+        text = str(self.samp_rate//1E6)
         self.win.addnstr(5, 17, text, 8)
         text = str(self.squelch_db)
         self.win.addnstr(6, 17, text, 8, curses.color_pair(5))
@@ -471,7 +471,7 @@ class RxWindow(object):
                 pass
             self.freq_entry = 'None'
             return True
-        elif self.freq_entry <> 'None' and (keyb - 48 in range (10) or keyb == ord('.')):
+        elif self.freq_entry != 'None' and (keyb - 48 in range (10) or keyb == ord('.')):
             # build up frequency from 1-9 and '.'
             self.freq_entry = self.freq_entry + chr(keyb)
             return False
@@ -610,8 +610,8 @@ def main():
         length = 128
         dynamic_range_db = 100
         offset_db = 50
-        data = np.power(10, (-dynamic_range_db*np.random.rand(length)/10)\
-            + offset_db/10)
+        data = np.power(10, (-dynamic_range_db*np.random.rand(length)//10)\
+            + offset_db//10)
         #data = 1E-5*np.ones(length)
         specwin.draw_spectrum(data)
 

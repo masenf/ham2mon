@@ -5,6 +5,7 @@ Created on Sat Jul  4 12:09:03 2015
 
 @author: madengr
 """
+from __future__ import print_function
 
 import numpy as np
 
@@ -68,30 +69,30 @@ def main():
     """ Tests the functions in this module"""
 
     # Test avg_freq()
-    print "Testing avg_freq()"
+    print("Testing avg_freq()")
     data = np.array([0, 1, 1, 0])
-    print "Input spectrum data is " + str(data)
+    print("Input spectrum data is " + str(data))
     result = avg_freq(data)
-    print "Average frequency is " + str(result)
+    print("Average frequency is " + str(result))
     if result == 1.5:
-        print "Test Pass"
+        print("Test Pass")
     else:
-        print "Test Fail"
-    print ""
+        print("Test Fail")
+    print("")
 
     # Test channel_estimate()
-    print "Testing channel_estimate()"
+    print("Testing channel_estimate()")
     data = np.array([0, 1, 1, 0, 0, 1, 1, 1])
     threshold = 0.5
-    print "Input spectrum data is " + str(data)
-    print "Threshold is " + str(threshold)
+    print("Input spectrum data is " + str(data))
+    print("Threshold is " + str(threshold))
     result = channel_estimate(data, threshold)
-    print "Channels at " + str(result)
+    print("Channels at " + str(result))
     if result == [1.5, 6.0]:
-        print "Test Pass"
+        print("Test Pass")
     else:
-        print "Test Fail"
-    print ""
+        print("Test Fail")
+    print("")
 
 
 if __name__ == '__main__':

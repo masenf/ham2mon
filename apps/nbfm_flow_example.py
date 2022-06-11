@@ -6,6 +6,7 @@
 # Generated: Sun Aug 16 20:37:05 2015
 ##################################################
 
+from __future__ import print_function
 if __name__ == '__main__':
     import ctypes
     import sys
@@ -14,7 +15,7 @@ if __name__ == '__main__':
             x11 = ctypes.cdll.LoadLibrary('libX11.so')
             x11.XInitThreads()
         except:
-            print "Warning: failed to XInitThreads()"
+            print("Warning: failed to XInitThreads()")
 
 from PyQt4 import Qt
 from gnuradio import analog
