@@ -351,18 +351,18 @@ def main():
         raise SystemExit(1)
 
     # Create scanner object
-    ask_samp_rate = parser.ask_samp_rate
-    num_demod = parser.num_demod
-    type_demod = parser.type_demod
-    hw_args = parser.hw_args
-    freq_correction = parser.freq_correction
-    record = parser.record
-    lockout_file_name = parser.lockout_file_name
-    priority_file_name = parser.priority_file_name
-    audio_bps = parser.audio_bps
-    scanner = Scanner(ask_samp_rate, num_demod, type_demod, hw_args,
-                      freq_correction, record, lockout_file_name,
-                      priority_file_name, audio_bps)
+    scanner = Scanner(
+        ask_samp_rate=parser.ask_samp_rate,
+        num_demod=parser.num_demod,
+        type_demod=parser.type_demod,
+        hw_args=parser.hw_args,
+        freq_correction=parser.freq_correction,
+        record=parser.record,
+        lockout_file_name=parser.lockout_file_name,
+        priority_file_name=parser.priority_file_name,
+        play=parser.play,
+        audio_bps=parser.audio_bps,
+    )
 
     # Set frequency, gain, squelch, and volume
     scanner.set_center_freq(parser.center_freq)
