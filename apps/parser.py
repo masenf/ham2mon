@@ -104,6 +104,10 @@ class CLParser(object):
                           default=8,
                           help="Audio bit depth (bps)")
 
+        parser.add_option("--quiet", action="store_true", dest="quiet",
+                          default=False,
+                          help="Print less output (scanner only)")
+
         options = parser.parse_args()[0]
         self.parser_args = parser.parse_args()[1]
 
@@ -124,6 +128,7 @@ class CLParser(object):
         self.priority_file_name = str(options.priority_file_name)
         self.freq_correction = int(options.freq_correction)
         self.audio_bps = int(options.audio_bps)
+        self.quiet = bool(options.quiet)
 
 
 def main():
@@ -152,6 +157,7 @@ def main():
     print("priority_file_name:  " + str(parser.priority_file_name))
     print("freq_correction:     " + str(parser.freq_correction))
     print("audio_bps:           " + str(parser.audio_bps))
+    print("quiet:               " + str(parser.quiet))
 
 
 if __name__ == '__main__':

@@ -389,13 +389,11 @@ def main():
         scanner.scan_cycle()
 
         # Print the GUI tuned channels if they have changed
-        if scanner.gui_tuned_channels != old_gui_tuned_channels:
+        if not parser.quiet and scanner.gui_tuned_channels != old_gui_tuned_channels:
             sys.stdout.write("Tuners at: ")
             for text in scanner.gui_tuned_channels:
                 sys.stdout.write(text + " ")
             sys.stdout.write("\n")
-        else:
-            pass
         old_gui_tuned_channels = scanner.gui_tuned_channels
 
 
